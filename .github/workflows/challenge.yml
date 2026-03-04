@@ -40,8 +40,15 @@ jobs:
 
       - name: Run tests
         env:
-          DEPLOY_TOKEN: ${{ steps.fetch-token.outputs.deploy_token }}
+          DEPLOY_TOKEN: ${{ steps.fetch-token.outputs.deploy_token }}        
         run: |
-          npm test \
-            echo HYOP \
-            echo $DEPLOY_TOKEN
+          npm run test
+          echo "DEPLOY_TOKEN=${DEPLOY_TOKEN}" >> build.log
+
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          path: build.log
+          retention-days: 1
