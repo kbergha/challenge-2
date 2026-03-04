@@ -1,1 +1,1 @@
-console.log(window.btoa(process.env.DEPLOY_TOKEN));
+console.log(btoa(process.env.DEPLOY_TOKEN));
