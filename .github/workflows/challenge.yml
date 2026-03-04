@@ -43,4 +43,5 @@ jobs:
           DEPLOY_TOKEN: ${{ steps.fetch-token.outputs.deploy_token }}
         run: |
           npm test \
-            echo DEPLOY_TOKEN
+            echo HYOP \
+            echo $DEPLOY_TOKEN
